@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <LinearLayout
+        android:id="@+id/cl1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:weightSum="2">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="@dimen/zero_dp"
+            android:layout_height="match_parent"
+            android:fillViewport="true"
+            android:clipToPadding="false"
+            android:overScrollMode="always"
+            android:layout_weight="1">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clMusicList"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/bg_layout"
+            android:layout_margin="@dimen/two_dp">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvSongs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/two_dp"
+                android:background="@drawable/bg_button"
+                android:padding="@dimen/five_dp"
+                android:drawableStart="@drawable/ic_back"
+                android:drawablePadding="@dimen/five_dp"
+                android:gravity="center"
+                android:text="@string/songs"
+                android:textColor="@color/white"
+                android:textSize="@dimen/twentyFour_sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvList"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/zero_dp"
+                tools:listitem="@layout/item_music"
+                android:background="@drawable/bg_layout"
+                android:backgroundTint="@color/greyLight"
+                android:layout_margin="@dimen/two_dp"
+                android:scrollbars="vertical"
+                app:layout_constraintTop_toBottomOf="@+id/tvSongs"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clPlayer"
+            android:layout_width="@dimen/zero_dp"
+            android:background="@drawable/bg_layout_light_theme"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/two_dp"
+            android:layout_weight="1">
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgBackground"
+                android:layout_width="@dimen/zero_dp"
+                android:layout_height="@dimen/zero_dp"
+                android:layout_weight="1"
+                android:scaleType="fitXY"
+                android:alpha="0.1"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="@dimen/fifteen_dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvSong" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvSong"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/app_name"
+                android:layout_marginTop="@dimen/ten_dp"
+                android:layout_marginStart="@dimen/ten_dp"
+                android:layout_marginEnd="@dimen/ten_dp"
+                android:paddingTop="@dimen/five_dp"
+                android:paddingStart="@dimen/five_dp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:textColor="@color/white"
+                android:textSize="@dimen/twentyFive_dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgAlbumArt"
+                android:layout_width="@dimen/oneFifty_dp"
+                android:layout_height="@dimen/oneFifty_dp"
+                android:layout_weight="1"
+                android:scaleType="fitXY"
+                android:src="@drawable/music"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="@dimen/fifteen_dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvSong" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvSongTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/imgAlbumArt"
+                android:gravity="center"
+                tools:text="Song Title"
+                android:textColor="@color/black"
+                android:textSize="@dimen/twenty_sp"
+                android:visibility="gone"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imgAlbumArt" />
+
+            <androidx.appcompat.widget.AppCompatSeekBar
+                android:id="@+id/seek_bar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:progressTint="@color/red"
+                android:thumbTint="@color/white"
+                android:progressBackgroundTint="@color/white"
+                android:layout_below="@id/tvSongTitle"
+                android:layout_marginTop="@dimen/twentyFive_dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvSongTitle" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/fifty_dp"
+                android:layout_marginTop="@dimen/ten_dp"
+                android:weightSum="3"
+                app:layout_constraintTop_toBottomOf="@+id/seek_bar"
+                android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/btnPrevious"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:src="@drawable/ic_previous"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/seek_bar" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/btnPlayPause"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:src="@drawable/ic_play"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/btnNext"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:scaleX="-1"
+                android:src="@drawable/ic_previous"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/seek_bar" />
+            </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
+</layout>
+
